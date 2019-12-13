@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head> 
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		    <title>手风琴</title>
+		    <script src="vue.js"></script>
+		    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+		    <style>
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			ul {
+				list-style: none;
+			}
+			li {
+				padding-left: 10px;
+				line-height: 2;
+			}
+			li:hover {
+				background-color: pink;
+			}
+			.list {
+				padding: 0 50px;
+			}
+			.list .title {
+				border: 1px solid #ccc;
+				padding: 10px 5px;
+				font-size: 18px;
+				font-weight: bold;
+			}
+			.list .item {
+				border: 1px solid #ccc;
+			}
+			.list:not(:nth-of-type(1)) .item {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		    <div id="app">
+			        <div class="list">
+				            <div class="title" @click="toggle($event)">1</div>
+				            <ul class="item">
+					                <li>11</li>
+					                <li>11</li>
+					                <li>11</li>
+					                <li>11</li>
+					                <li>11</li>
+					            </ul>
+				        </div>
+			        <div class="list">
+				            <div class="title" @click="toggle($event)">2</div>
+				            <ul class="item">
+					                <li>22</li>
+					                <li>22</li>
+					                <li>22</li>
+					                <li>22</li>
+					                <li>22</li>
+					            </ul>
+				        </div>
+			        <div class="list">
+				            <div class="title" @click="toggle($event)">3</div>
+				            <ul class="item">
+					                <li>33</li>
+					                <li>33</li>
+					                <li>33</li>
+					                <li>33</li>
+					                <li>33</li>
+					            </ul>
+				        </div>
+			    </div>
+		    <script>
+			var app = new Vue({
+				el: '#app',
+				methods: {
+					toggle: function(ev) {
+						var $title = $(ev.target);
+						$title.parents('#app').find('.item').hide();
+						$title.next().show(1000);
+					}
+				}
+			})
+		</script>
+
+	</body>
+
+</html>

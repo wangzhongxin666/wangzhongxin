@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<ab></ab>
+		</div>
+		<template id="no1">
+			<div style="font-size:30px;">
+				<div style="line-height:50px;color:red;overflow: hidden;">
+					<div v-for="(i,$index) in arr" style="float: left;padding: 0 10px;" @click="index=$index" :class="$index==index?'co':''">{{i.t}}</div>
+				</div>
+				<div style="line-height:50px;">
+					  <div v-for="(i,$index) in arr" v-show="index==$index">
+					  	{{i.c}}
+					  </div>
+				</div>
+			</div>
+		</template>
+	</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	Vue.component('ab',{
+		template:'#no1',
+		data(){
+			return{
+				index:0,
+				arr:[
+					{t:1,c:111111},
+					{t:2,c:222222},
+					{t:3,c:333333}
+				]
+			}
+		},
+		methods:{
+			btn(){
+				this.a++
+			}
+		}
+	})	
+	
+	new Vue({
+		el:'#box',
+	})
+	
+</script>
