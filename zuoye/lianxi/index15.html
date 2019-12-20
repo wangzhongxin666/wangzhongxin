@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			这是父级：{{box}}
+			<button @click="box++">++</button>
+			<no1 :box="box" @no1="box_btn"></no1>
+			<no2 :box="box"></no2>
+		</div>
+		<template id="no1">
+			<div>
+			这是子级：{{no1}}	
+				<button @click="btn">++</button>
+			</div>
+		</template>
+		<template id="no2">
+			<div>
+			这是同级：{{no2}}	
+				<button @click="btn_1">++</button>
+			</div>
+		</template>
+	</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	var bus=new Vue()
+	Vue.component("no1",{
+		template:"#no1",
+		props:['box'],
+		data(){
+			return{
+				no1:this.box
+			}
+		},
+		mounted(){
+			bus.$on('no2',(a)=>{
+				this.no1=a
+				this.$emit('no1',this.no1)
+				console.log(a)
+			})
+		},
+		methods:{
+			btn(){
+				this.no1++
+				this.$emit('no1',this.no1)
+			}
+		},
+		watch:{
+			box(a,b){
+				this.no1=a
+				console.log(a,b)
+			}
+		}
+	})
+	Vue.component("no2",{
+		template:"#no2",
+		props:['box'],
+		data(){
+			return{
+				no2:this.box
+			}
+		},
+		methods:{
+			btn_1(){
+				this.no2++
+				bus.$emit('no2',this.no2)
+			}
+		},
+		watch:{
+			box(a,b){
+				this.no2=a
+				console.log(a,b)
+			}
+		}
+	})
+	new Vue({
+		el:"#box",
+		data:{ 
+			box:0
+		},
+		methods:{
+			box_btn(a){
+				this.box=a
+			}
+		}
+	})
+</script>

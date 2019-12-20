@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div style="height: 50px; line-height: 50px; background: #FFC0CB;">
+				
+					<a href="#/">首页</a>
+					<a href="#/no2">商品</a>
+					<a href="#/no3">地图</a>
+				
+			</div>
+			<div style="min-height: 500px;">
+				<router-view></router-view>
+			</div>
+			<div style="height: 150px; line-height: 50px; background: #FFC0CB;"></div>
+		</div>
+		<!--  -->
+		<template id="no1">
+			<div>
+				<no1></no1>
+				首页
+			</div>
+		</template>
+		<template id="no2">
+			<div>
+				<div style="width: 200px;min-height: 500px; border: 1px solid; float: left; line-height: 50px;">
+					<div>
+						<a href="#/no2/">服饰</a>
+						</div>
+					<div>
+						<a href="#/no2/no1">水果</a>
+						</div>
+					<div>
+						<a href="#/no2/no2">军用物品</a>
+					</div>
+				</div>
+				<div style="width: 500px;min-height: 500px; border: 1px solid; float: left;">
+					<router-view></router-view>
+				</div>
+				
+			</div>
+		</template>
+		<template id="no3">
+			<div>
+				地图
+			</div>
+		</template>
+		<!--  -->
+	</body>
+</html>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+<script src="dom.js"> </script>
+<script src="index.js"></script>

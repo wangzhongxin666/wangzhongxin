@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			这里是父级：{{box}}
+			<button @click="box++">++</button>
+			<a-lee :box="box" @no1="box_btn"></a-lee>
+		</div>
+		<template id="no1">
+			<div>
+				这里是子级：{{no1}}
+				<button @click="btn">++</button>
+			</div>
+		</template>
+	</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	Vue.component("aLee",{
+		template:"#no1",
+		props:['box'],
+		data(){
+			return{
+				no1:this.box
+			}
+		},
+		methods:{
+			btn(){
+				this.no1++
+				this.$emit('no1',this.no1)
+			}
+		},
+		watch:{
+			box(a,b){
+				this.no1=a
+				console.log(a,b)
+			}
+		}
+		
+	})
+	new Vue({
+		el:"#box",
+		data:{
+			box:0
+		},
+		methods:{
+			box_btn(a){
+				this.box=a
+				}
+		}
+	})
+</script>
