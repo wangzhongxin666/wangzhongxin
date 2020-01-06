@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">、、
 	<title>王中兴的个人博客</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -229,3 +229,13 @@
 	<script src="js/main.js"></script>
 </body>
 </html>
+<script>
+  window.onload = function () {
+    document.documentElement.style.fontSize =
+      document.documentElement.clientWidth / 16 + 'px';
+    window.onresize = function () {
+      document.documentElement.style.fontSize =
+        document.documentElement.clientWidth / 16 + 'px';
+    }
+  }
+</script>
